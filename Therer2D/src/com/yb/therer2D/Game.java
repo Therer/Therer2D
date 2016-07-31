@@ -66,6 +66,7 @@ public class Game extends Canvas implements Runnable{
 	        return;
 	    }
 	    
+	    screen.clear();
 	    screen.render();
 	    
 	    System.arraycopy(screen.pixels, 0, pixels, 0, pixels.length);
