@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 
 import com.yb.therer2D.graphics.Screen;
 import com.yb.therer2D.input.Keyboard;
+import com.yb.therer2D.level.Level;
+import com.yb.therer2D.level.RandomLevel;
 
 public class Game extends Canvas implements Runnable{
 	private static final long serialVersionUID = 1L;
@@ -24,6 +26,7 @@ public class Game extends Canvas implements Runnable{
 	private Thread thread;
 	private JFrame frame;
 	private Keyboard key;
+	private Level level;
 	private boolean running = false;
 	
 	private Screen screen;
@@ -37,6 +40,7 @@ public class Game extends Canvas implements Runnable{
 	    screen = new Screen(width, height);
 	    frame = new JFrame();	  
 	    key = new Keyboard();
+	    level = new RandomLevel(64, 64);
 	    
 	    addKeyListener(key);
 	}
@@ -103,7 +107,7 @@ public class Game extends Canvas implements Runnable{
 	    }
 	    
 	    screen.clear();
-	    screen.render(x,y);
+	    level.render(x, y, screen);
 	    
 	    System.arraycopy(screen.pixels, 0, pixels, 0, pixels.length);
 	    
