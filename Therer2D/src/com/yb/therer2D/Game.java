@@ -1,7 +1,6 @@
 package com.yb.therer2D;
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -67,9 +66,12 @@ public class Game extends Canvas implements Runnable{
 	        return;
 	    }
 	    
-	    Graphics g = bs.getDrawGraphics();
-	    g.setColor(Color.BLACK);
-	    g.fillRect(0, 0, getWidth(), getHeight());
+	    screen.render();
+	    
+	    System.arraycopy(screen.pixels, 0, pixels, 0, pixels.length);
+	    
+	    Graphics g = bs.getDrawGraphics();	    
+	    g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 	    g.dispose();
 	    bs.show();
 	}
