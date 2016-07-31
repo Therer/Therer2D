@@ -1,0 +1,15 @@
+package com.yb.therer2D.level.tile;
+
+import com.yb.therer2D.graphics.Screen;
+import com.yb.therer2D.graphics.Sprite;
+
+public class GrassTile extends Tile {
+	
+	public GrassTile(Sprite sprite) {
+		super(sprite);
+	}
+	
+	public void render(int x, int y, Screen screen) {
+		//do Render stuff
+	}
+}
