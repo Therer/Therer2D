@@ -1,5 +1,7 @@
 package com.yb.therer2D.entity.mob;
 
+import com.yb.therer2D.graphics.Screen;
+import com.yb.therer2D.graphics.Sprite;
 import com.yb.therer2D.input.Keyboard;
 
 public class Player extends Mob {
@@ -29,7 +31,8 @@ public class Player extends Mob {
 		}
 	}
 	
-	public void render() {		
+	public void render(Screen screen) {		
+		screen.renderPlayer(x, y, Sprite.player0);
 	}
 }
 
