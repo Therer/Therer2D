@@ -1,7 +1,9 @@
 package com.yb.therer2D;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -9,6 +11,7 @@ import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
 
+import com.yb.therer2D.entity.mob.Player;
 import com.yb.therer2D.graphics.Screen;
 import com.yb.therer2D.input.Keyboard;
 import com.yb.therer2D.level.Level;
@@ -27,6 +30,7 @@ public class Game extends Canvas implements Runnable{
 	private JFrame frame;
 	private Keyboard key;
 	private Level level;
+	private Player player;
 	private boolean running = false;
 	
 	private Screen screen;
@@ -41,6 +45,7 @@ public class Game extends Canvas implements Runnable{
 	    frame = new JFrame();	  
 	    key = new Keyboard();
 	    level = new RandomLevel(64, 64);
+	    player = new Player(key);
 	    
 	    addKeyListener(key);
 	}
@@ -89,14 +94,10 @@ public class Game extends Canvas implements Runnable{
 		}
 		stop();
 	}
-	int x,y;
 	
 	public void update() {
 		key.update();
-		if(key.up) y--;
-		if(key.down) y++;
-		if(key.left) x--;
-		if(key.right) x++;
+		player.update();
 	}
 	
 	public void render() {
@@ -107,12 +108,15 @@ public class Game extends Canvas implements Runnable{
 	    }
 	    
 	    screen.clear();
-	    level.render(x, y, screen);
+	    level.render(player.x, player.y, screen);
 	    
 	    System.arraycopy(screen.pixels, 0, pixels, 0, pixels.length);
 	    
 	    Graphics g = bs.getDrawGraphics();	    
 	    g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+	    g.setColor(Color.WHITE);
+	    g.setFont(new Font("Verdana", 0, 50));
+	    g.drawString("X: " + player.x + ", Y: " + player.y, 450, 400);
 	    g.dispose();
 	    bs.show();
 	}
