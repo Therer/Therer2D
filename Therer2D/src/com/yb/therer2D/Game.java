@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import com.yb.therer2D.entity.mob.Player;
 import com.yb.therer2D.graphics.Screen;
 import com.yb.therer2D.input.Keyboard;
+import com.yb.therer2D.input.Mouse;
 import com.yb.therer2D.level.Level;
 import com.yb.therer2D.level.TileCoord;
 
@@ -50,6 +51,10 @@ public class Game extends Canvas implements Runnable {
 		player.init(level);
 
 		addKeyListener(key);
+
+		Mouse mouse = new Mouse();
+		addMouseListener(mouse);
+		addMouseMotionListener(mouse);
 	}
 
 	public synchronized void start() {
@@ -123,7 +128,10 @@ public class Game extends Canvas implements Runnable {
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Verdana", 0, 50));
-		g.drawString("X: " + player.x + ", Y: " + player.y, 450, 400);
+		// g.drawString("X: " + player.x + ", Y: " + player.y, 450, 400);
+		if (Mouse.getButton() != -1)
+			g.drawString("Button: " + Mouse.getButton(), 80, 80);
+		g.fillRect(Mouse.getX() - 32, Mouse.getY() - 32, 64, 64);
 		g.dispose();
 		bs.show();
 	}
