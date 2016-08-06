@@ -1,6 +1,7 @@
 # Therer2D
 Game Programming - TheChernoProject
 
+EPS 49 is messing. but the code is handel'd in EPS 50 sorry.
 
 Build on Java 1.8
 
