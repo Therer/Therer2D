@@ -22,8 +22,6 @@ public class Keyboard implements KeyListener {
 																// this should
 																// be A for most
 		right = keys[KeyEvent.VK_RIGHT] || keys[KeyEvent.VK_D];
-
-		System.out.println(up);
 	}
 
 	public void keyPressed(KeyEvent e) {
