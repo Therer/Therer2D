@@ -18,12 +18,13 @@ public class Level {
 
 	public Level(String path) {
 		loadLevel(path);
+		generateLevel();
 	}
 
 	protected void generateLevel() {
 	}
 
-	private void loadLevel(String path) {
+	protected void loadLevel(String path) {
 	}
 
 	private void time() {
@@ -34,19 +35,18 @@ public class Level {
 
 	public void render(int xScroll, int yScroll, Screen screen) {
 		screen.setOffset(xScroll, yScroll);
-
 		int x0 = xScroll >> 4;
 		int x1 = (xScroll + screen.width + 16) >> 4;
 		int y0 = yScroll >> 4;
 		int y1 = (yScroll + screen.height + 16) >> 4;
-
 		for (int y = y0; y < y1; y++) {
 			for (int x = x0; x < x1; x++) {
 				// getTile(x, y).render(x, y, screen);
-				if (x < 0 || y < 0 || x >= width || y >= height)
+				if (x + y * 16 < 0 || x + y * 16 >= 256) {
 					Tile.voidTile.render(x, y, screen);
-				else
-					tiles[x + y * 16].render(x, y, screen);
+					continue;
+				}
+				tiles[x + y * 16].render(x, y, screen);
 			}
 		}
 	}
