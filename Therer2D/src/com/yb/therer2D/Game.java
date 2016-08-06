@@ -15,6 +15,7 @@ import com.yb.therer2D.entity.mob.Player;
 import com.yb.therer2D.graphics.Screen;
 import com.yb.therer2D.input.Keyboard;
 import com.yb.therer2D.level.Level;
+import com.yb.therer2D.level.TileCoord;
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -44,7 +45,8 @@ public class Game extends Canvas implements Runnable {
 		frame = new JFrame();
 		key = new Keyboard();
 		level = Level.spawn;
-		player = new Player(4 * 16, 5 * 16, key);
+		TileCoord playerSpawn = new TileCoord(19, 57);
+		player = new Player(playerSpawn.x(), playerSpawn.y(), key);
 
 		addKeyListener(key);
 	}
