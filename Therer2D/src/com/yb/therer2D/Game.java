@@ -15,7 +15,7 @@ import com.yb.therer2D.entity.mob.Player;
 import com.yb.therer2D.graphics.Screen;
 import com.yb.therer2D.input.Keyboard;
 import com.yb.therer2D.level.Level;
-import com.yb.therer2D.level.RandomLevel;
+import com.yb.therer2D.level.SpawnLevel;
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -44,7 +44,7 @@ public class Game extends Canvas implements Runnable {
 		screen = new Screen(width, height);
 		frame = new JFrame();
 		key = new Keyboard();
-		level = new RandomLevel(64, 64);
+		level = new SpawnLevel("/textures/level.png");
 		player = new Player(key);
 
 		addKeyListener(key);
