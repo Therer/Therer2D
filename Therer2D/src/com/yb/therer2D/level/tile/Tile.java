@@ -19,7 +19,7 @@ public class Tile {
 	public static Tile spawn_wall1 = new SpawnWallTile(Sprite.spawn_wall1);
 	public static Tile spawn_wall2 = new SpawnWallTile(Sprite.spawn_wall2);
 	public static Tile spawn_floor = new SpawnFloorTile(Sprite.spawn_floor);
-	
+
 	public static final int col_spawn_grass = 0xFF00FF00;
 	public static final int col_spawn_hedge = 0; // unused
 	public static final int col_spawn_water = 0; // unused
