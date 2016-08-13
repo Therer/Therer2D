@@ -131,7 +131,7 @@ public class Game extends Canvas implements Runnable {
 		// g.drawString("X: " + player.x + ", Y: " + player.y, 450, 400);
 		if (Mouse.getButton() != -1)
 			g.drawString("Button: " + Mouse.getButton(), 80, 80);
-		g.fillRect(Mouse.getX() - 32, Mouse.getY() - 32, 64, 64);
+		// g.fillRect(Mouse.getX() - 32, Mouse.getY() - 32, 64, 64);
 		g.dispose();
 		bs.show();
 	}

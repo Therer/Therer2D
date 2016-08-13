@@ -3,6 +3,7 @@ package com.yb.therer2D.entity.mob;
 import com.yb.therer2D.graphics.Screen;
 import com.yb.therer2D.graphics.Sprite;
 import com.yb.therer2D.input.Keyboard;
+import com.yb.therer2D.input.Mouse;
 
 public class Player extends Mob {
 
@@ -38,12 +39,21 @@ public class Player extends Mob {
 			xa--;
 		if (input.right)
 			xa++;
-
 		if (xa != 0 || ya != 0) {
 			move(xa, ya);
 			walking = true;
 		} else
 			walking = false;
+		updateShooting();
+	}
+
+	private void updateShooting() {
+		if (Mouse.getButton() == 1) {
+			double dx = Mouse.getX() - 300 / 2;
+			double dy = Mouse.getX() - 168 / 2;
+			double dir = Math.atan2(dy, dx);
+			shoot(x, y, dir);
+		}
 	}
 
 	public void render(Screen screen) {
