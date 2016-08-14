@@ -1,6 +1,7 @@
 package com.yb.therer2D.entity.mob;
 
 import com.yb.therer2D.Game;
+import com.yb.therer2D.entity.projectile.Projectile;
 import com.yb.therer2D.graphics.Screen;
 import com.yb.therer2D.graphics.Sprite;
 import com.yb.therer2D.input.Keyboard;
@@ -45,7 +46,17 @@ public class Player extends Mob {
 			walking = true;
 		} else
 			walking = false;
+		clear();
 		updateShooting();
+	}
+
+	private void clear() {
+		for (int i = 0; i < Projectiles.size(); i++) {
+			Projectile p = Projectiles.get(i);
+			if (p.isRemoved())
+				Projectiles.remove(i);
+		}
+
 	}
 
 	private void updateShooting() {
