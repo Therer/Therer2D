@@ -1,8 +1,5 @@
 package com.yb.therer2D.entity.mob;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.yb.therer2D.entity.Entity;
 import com.yb.therer2D.entity.projectile.Projectile;
 import com.yb.therer2D.entity.projectile.WiazrdProjectile;
@@ -13,7 +10,6 @@ public abstract class Mob extends Entity {
 	protected Sprite sprite;
 	protected int dir = 0;
 	protected boolean moving = false;
-	protected List<Projectile> Projectiles = new ArrayList<Projectile>();
 
 	public void move(int xa, int ya) {
 		if (xa != 0 && ya != 0) {
@@ -35,7 +31,7 @@ public abstract class Mob extends Entity {
 			x += xa;
 			y += ya;
 		}
-		System.out.println(Projectiles.size());
+		System.out.println(level.getProjectiles().size());
 	}
 
 	public void update() {
@@ -44,8 +40,7 @@ public abstract class Mob extends Entity {
 	protected void shoot(int x, int y, double dir) {
 		// dir *= 180 / Math.PI;
 		Projectile p = new WiazrdProjectile(x, y, dir);
-		Projectiles.add(p);
-		level.add(p);
+		level.addProjectile(p);
 	}
 
 	public void render() {
