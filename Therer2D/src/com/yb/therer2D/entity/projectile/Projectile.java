@@ -17,4 +17,13 @@ public abstract class Projectile extends Entity {
 		this.x = x;
 		this.y = y;
 	}
+
+	public Sprite getSprite() {
+		return sprite;
+	}
+
+	public int getSpriteSize() {
+		return sprite.SIZE;
+	}
+
 }
