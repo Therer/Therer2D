@@ -2,6 +2,7 @@ package com.yb.therer2D.entity.mob;
 
 import com.yb.therer2D.Game;
 import com.yb.therer2D.entity.projectile.Projectile;
+import com.yb.therer2D.entity.projectile.WiazrdProjectile;
 import com.yb.therer2D.graphics.Screen;
 import com.yb.therer2D.graphics.Sprite;
 import com.yb.therer2D.input.Keyboard;
@@ -13,6 +14,7 @@ public class Player extends Mob {
 	private Sprite sprite;
 	private int anim = 0;
 	private boolean walking = false;
+	private int fireRate = 0;
 
 	public Player(Keyboard input) {
 		this.input = input;
@@ -23,9 +25,14 @@ public class Player extends Mob {
 		this.x = x;
 		this.y = y;
 		this.input = input;
+		sprite = Sprite.player_forward;
+		fireRate = WiazrdProjectile.FIRE_RATE;
+
 	}
 
 	public void update() {
+		if (fireRate > 0)
+			fireRate--;
 		int xa = 0, ya = 0;
 
 		if (anim < 7500)
@@ -60,11 +67,12 @@ public class Player extends Mob {
 	}
 
 	private void updateShooting() {
-		if (Mouse.getButton() == 1) {
+		if (Mouse.getButton() == 1 && fireRate <= 0) {
 			double dx = Mouse.getX() - Game.getWindowWidth() / 2;
 			double dy = Mouse.getY() - Game.getWindowHeight() / 2;
 			double dir = Math.atan2(dy, dx);
 			shoot(x, y, dir);
+			fireRate = WiazrdProjectile.FIRE_RATE;
 		}
 	}
 

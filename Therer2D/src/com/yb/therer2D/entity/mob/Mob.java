@@ -31,7 +31,6 @@ public abstract class Mob extends Entity {
 			x += xa;
 			y += ya;
 		}
-		System.out.println(level.getProjectiles().size());
 	}
 
 	public void update() {
