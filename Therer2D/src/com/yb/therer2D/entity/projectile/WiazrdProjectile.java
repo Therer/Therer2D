@@ -18,6 +18,8 @@ public class WiazrdProjectile extends Projectile {
 	}
 
 	public void update() {
+		if (level.TileCollision(x, y, nx, ny, 7))
+			remove();
 		move();
 	}
 

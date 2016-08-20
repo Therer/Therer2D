@@ -53,7 +53,6 @@ public abstract class Mob extends Entity {
 			if (level.getTile(xt, yt).solid())
 				solid = true;
 		}
-
 		return solid;
 	}
 }
