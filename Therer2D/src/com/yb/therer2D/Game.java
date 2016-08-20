@@ -8,11 +8,13 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.util.Random;
 
 import javax.swing.JFrame;
 
 import com.yb.therer2D.entity.mob.Player;
 import com.yb.therer2D.graphics.Screen;
+import com.yb.therer2D.graphics.Sprite;
 import com.yb.therer2D.input.Keyboard;
 import com.yb.therer2D.input.Mouse;
 import com.yb.therer2D.level.Level;
@@ -131,6 +133,13 @@ public class Game extends Canvas implements Runnable {
 		level.render(xScroll, yScroll, screen);
 		player.render(screen);
 
+		Sprite sprite = new Sprite(2, 2, 0xffffff);
+		Random random = new Random();
+		for (int i = 0; i < 100; i++) {
+			int x = random.nextInt(20);
+			int y = random.nextInt(20);
+			screen.renderSprite(width - 60 + x, 50 + y, sprite, true);
+		}
 		System.arraycopy(screen.pixels, 0, pixels, 0, pixels.length);
 
 		Graphics g = bs.getDrawGraphics();

@@ -4,6 +4,7 @@ public class Sprite {
 
 	public final int SIZE;
 	private int x, y;
+	private int width, heigth;
 	public int[] pixels;
 	private SpriteSheet sheet;
 
@@ -40,6 +41,8 @@ public class Sprite {
 
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 		SIZE = size;
+		width = size;
+		heigth = size;
 		pixels = new int[SIZE * SIZE];
 		this.x = x * SIZE;
 		this.y = y * SIZE;
@@ -47,16 +50,34 @@ public class Sprite {
 		load();
 	}
 
+	public Sprite(int width, int heigth, int color) {
+		SIZE = -1;
+		this.width = width;
+		this.heigth = heigth;
+		pixels = new int[width * heigth];
+		setColor(color);
+	}
+
 	public Sprite(int size, int color) {
 		SIZE = size;
+		width = size;
+		heigth = size;
 		pixels = new int[SIZE * SIZE];
 		setColor(color);
 	}
 
 	private void setColor(int color) {
-		for (int i = 0; i < SIZE * SIZE; i++) {
+		for (int i = 0; i < width * heigth; i++) {
 			pixels[i] = color;
 		}
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeigth() {
+		return heigth;
 	}
 
 	private void load() {
